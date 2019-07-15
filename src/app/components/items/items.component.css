@@ -1,0 +1,24 @@
+::-webkit-input-placeholder {
+    color: #21acac;
+    opacity: 1 !important; /* for older chrome versions. may no longer apply. */
+    font-weight : bold;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+    color: #21acac;
+    opacity: 1 !important;
+    font-weight : bold;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+    color: #21acac;
+    opacity: 1 !important;
+    font-weight : bold;
+}
+
+:-ms-input-placeholder {  
+   color: #21acac;
+   font-weight : bold;
+}
+
+ul {margin:0 0 0 0;}

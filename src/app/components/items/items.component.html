@@ -1,0 +1,73 @@
+
+<div class="card">
+  <div class="card-content">
+      <span class="card-title">Search Items</span>
+    <div class="row">
+      <div class="input-field col s6">
+          <i class="material-icons prefix">search</i>
+            <input type="text" placeholder="search by title ..." [(ngModel)]="filteredItemsTitle">
+      </div>    
+      <div class="input-field col s6">
+          <i class="material-icons prefix">search</i>
+            <input type="text" placeholder="search by description ..." [(ngModel)]="filteredItemsDesc">
+      </div>    
+    </div>    
+  </div>  
+</div>
+
+<div class="card">
+  <div class="card-content">
+
+    <span class="card-title">Items
+        <button class="btn waves-effect waves-light right indigo" (click)="loopItems($event)" type="button">PDF
+            <i class="material-icons left">description</i>
+        </button> 
+    </span>
+
+    <div *ngIf="items?.length > 0;else noItems">
+      <ul *ngFor="let item of items | filter : filteredItemsTitle:'title' | filter : filteredItemsDesc:'description'" class="collection">
+        <li class="collection-item">
+
+          <strong>{{item.title}}: </strong> {{item.description}}   
+
+          <a href="#" class="secondary-content">
+            <i (click)="editItem($event, item)" class="material-icons">create</i> 
+            <i *ngIf="editState && itemToEdit.id == item.id" (click)="clearState()" class="material-icons">eject</i> 
+          </a>    
+            
+          <div *ngIf="editState && itemToEdit.id == item.id">
+            <form (ngSubmit)="updateItem(item)">
+              <div class="row">
+                  <div class="input-field col s5">
+                      <input type="text" placeholder="Add Title" [(ngModel)]="item.title" name="title">
+                  </div>
+                  <div class="input-field col s5">
+                      <input type="text" placeholder="Add Description" [(ngModel)]="item.description" name="description">
+                  </div>
+              </div>
+              <div class="row">
+                  <button class="btn waves-effect waves-light orange" type="submit" name="action">Update Item
+                      <i class="material-icons right">create</i>
+                  </button>
+                  <a  (click)="deleteItem($event, item)" 
+                      class="waves-effect waves-light btn red">
+                      <i class="material-icons right">delete</i>Delete Item
+                  </a>
+              </div>            
+            </form> 
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+<ng-template #noItems>
+  <hr>
+  <h5>There are no items to list</h5>
+</ng-template>
+
+
+

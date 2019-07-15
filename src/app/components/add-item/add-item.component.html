@@ -1,0 +1,25 @@
+
+<div class="card">
+    <div class="card-content">
+      <span class="card-title center">Add Item</span>
+
+      <form (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="input-field">
+            <input type="text" placeholder="Add Title" [(ngModel)]="item.title" name="title">
+            <label>Title</label>
+          </div>
+          <div class="input-field">
+            <input type="text" placeholder="Add Description" [(ngModel)]="item.description" name="description">
+            <label>Description</label>
+          </div>
+          <div class="center">
+              <button class="btn waves-effect waves-light" type="submit" name="action">Add Item
+                  <i class="material-icons left">add</i>
+              </button>
+          </div>
+
+        </div>
+      </form>
+    </div>
+  </div>
